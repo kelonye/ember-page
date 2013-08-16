@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='../public/public.css' rel='stylesheet' media='screen'>
+    <style>
+    body{
+      padding: 100px;
+    }
+    .component-page{
+      list-style: none;
+      font-size: 15px;
+      float: left;
+      color: #444;
+      cursor: pointer;
+      padding: 7px 9px;
+      margin-right: 3px;
+      border: 1px solid #ddd;
+      border-radius: 100px;
+    }
+    .component-page.active{
+      color: rgba(46, 160, 24, 1);
+      border-color: rgba(46, 160, 24, 1);
+    }
+    </style>
+  </head>
+  <body>
+    <script src='../public/public.js'></script>
+    <script data-template-name='index' type='text/x-handlebars'>
+      <ul>
+      {{#each controller}}
+      {{view App.PageView contentBinding='this'}}
+      {{/each}}
+      </ul>
+    </script>
+    <script type='text/javascript'>
+      var page = require('ember-page');
+      App = Em.Application.create();
+      App.PageView = Em.View.extend(page);
+      App.IndexRoute = Em.Route.extend({
+        model: function(){
+          var pages = [];
+          var n = 0;
+          while (++n<=15){
+            pages.push(n);
+          }
+          return pages;
+        },
+        setupController: function(controller, model){
+          this._super(controller, model);
+          controller.set('selected', 4);
+        }
+      });
+    </script>
+  </body>
+</html>
