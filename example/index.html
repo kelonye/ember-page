@@ -27,8 +27,8 @@
     <script src='../public/public.js'></script>
     <script data-template-name='index' type='text/x-handlebars'>
       <ul>
-      {{#each controller}}
-      {{view App.PageView contentBinding='this'}}
+      {{#each item in model}}
+      {{view App.PageView itemBinding='item' itemsBinding='model'}}
       {{/each}}
       </ul>
     </script>
@@ -47,7 +47,7 @@
         },
         setupController: function(controller, model){
           this._super(controller, model);
-          controller.set('selected', 4);
+          model.set('selected', 4);
         }
       });
     </script>
