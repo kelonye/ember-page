@@ -28,7 +28,7 @@
     <script data-template-name='index' type='text/x-handlebars'>
       <ul>
       {{#each item in model}}
-      {{view App.PageView value=item selected=model.selected content=model}}
+      {{view 'page' value=item selected=model.selected content=model}}
       {{/each}}
       </ul>
     </script>
